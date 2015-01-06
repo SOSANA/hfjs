@@ -1,0 +1,16 @@
+{
+// Configure your Run and Preview buttons here.
+
+// Run button configuration
+  "commands": {
+        "Node version": "node --version"
+  },
+
+// Preview button configuration
+  "preview": {
+        "Project Index (static)": "https://{{student-cherry.codio.io}}/{{index}}",
+        "Current File (static)": "https://{{student-cherry.codio.io}}/{{filepath}}",
+        "Box URL": "http://{{student-cherry.codio.io}}:3000/",
+        "Box URL SSL": "https://{{student-cherry.codio.io}}:9500/"
+  }
+}
