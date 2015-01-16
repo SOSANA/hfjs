@@ -4,7 +4,7 @@
 <meta charset="utf-8"> 
 <title>Planets</title> 
 <style>
-	.redtext { color: red; } 
+	.redtext { color: red; }
 </style>
 </head>
 <body>
@@ -15,12 +15,22 @@
 <h1>Blue Planet</h1>
 <p id="blueplanet">All systems A-OK</p>
 <script>
-function init() {
-	var planet = document.getElementById("greenplanet");
-	planet.innerHTML = "Red Alert: hit by phaser fire!"; 
-	planet.setAttribute("class", "redtext");
+// call is also known as an even handler
+function init(){
+  var planet = document.getElementById("greenplanet");
+  planet.innerHTML = "Red Alert: hit by phaser fire!";
+  planet.setAttribute("class", "redtext");
 }
+  
+// make sure not to use parentheses after the function name
+// we're just assigning the function value to the window.onload property
+// example of “the page is loaded” event, which we handle by setting the onload property of the window object. 
+// You can also write event handlers that handle things like “call this function every five seconds,” or 
+// “some data arrived from a web service that we need to deal with,” or “the user clicked a button and we need 
+// to get some data from a form,” and there many more
+
+// calling the init function when page is finally loaded for use when in head rather than body elemement
 window.onload = init;
-</script>
+  </script>
 </body>
 </html>
