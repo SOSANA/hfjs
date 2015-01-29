@@ -1,10 +1,60 @@
 
 
+// string methods and properties
+// Split Method - The split method takes a character that acts as a delimiter, and breaks the string into 
+// parts based on the delimiter.
+var data = "name|phone|address";
+//Split uses the delimiter to break the original string into pieces, which are returned in an array
+var vals = data.split("|");
+// Notice below we are passing two arguments to consol.log seperated by a comma. This way, The
+// vals array doesn't get converted to a string before it's displayed in the console.
+console.log("Split array is ", vals);
+
+/*
+// Substring Method - Give the substring method two indices, and it will extract and return the string contained within them.
+// Here's the string we're going to call substring on.
+var data = "name|phone|address";
+//We'd like the string from index 5 and up to(but nto include) 10 returned.
+var val = data.substring(5, 10);
+// We get back a new string with the characters from index 5 to 10.
+console.log("substring is " + val);
+//omitting second index, substring will extract a string that starts at the first index and then 
+//continues until the end of the original string.
+val = data.substring(5);
+console.log("Substring is now " + val);
+*/
+
+// indexOf Method takes a string as an argument and returns the index of the 
+// first character of the first occurrence of that argument in the string.
+/*
+var phrase = "the cat in the hat";
+var index = phrase.indexOf("cat");
+console.log("there's a cat sitting at index " + index);
+
+index = phrase.indexOf("the", 5);
+console.log("there's a the sitting at index " + index);
+
+index = phrase.indexOf("dog");
+console.log("there's a dog sitting at index " + index);
+
+// charAt method
+var input = "jimbo@gmail.com";
+for(var i = 0; i < input.length; i++) {
+ if (input.charAt(i) === "@") {
+  console.log("There's an @ sign at index " + i);
+  }
+}
+*/
+
+
 // Brain Power
 // This will compair presentableText to 0 and if it is than it will alert the string to lowercase
+/*
 var text = "YOU SHOULD NEVER SHOUT WHEN TYPING"; 
 var presentableText = text.toLowerCase(); 
 if (presentableText.length > 0) { alert(presentableText); }
+*/
+
 
 // Sharpen your pencil - lie detector test
 // Five Falseys include undefined, null, 0, Empty string, NaN
