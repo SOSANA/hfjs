@@ -1,14 +1,29 @@
+//laboratory instanceof
+/*
+function Duck(sound) {
+  this.sound = sound;
+  this.quack = function() {console.log(this.sound);}
+}
 
+var toy = new Duck("quack quack");
+
+toy.quack();
+
+console.log(typeof toy);
+console.log(toy instanceof Duck);
+*/
 
 // string methods and properties
 // Split Method - The split method takes a character that acts as a delimiter, and breaks the string into 
 // parts based on the delimiter.
+/*
 var data = "name|phone|address";
 //Split uses the delimiter to break the original string into pieces, which are returned in an array
 var vals = data.split("|");
 // Notice below we are passing two arguments to consol.log seperated by a comma. This way, The
 // vals array doesn't get converted to a string before it's displayed in the console.
 console.log("Split array is ", vals);
+*/
 
 /*
 // Substring Method - Give the substring method two indices, and it will extract and return the string contained within them.
