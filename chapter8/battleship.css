@@ -16,10 +16,12 @@ div#messageArea {
   color: rgb(83, 175, 19);
 }
 table {
-  position: absolute;
-  top: 173px;
-  left: 98px;
-  border-spacing: 0px;
+  border-spacing: 0px; 
+	/* could use border-collapse instead */
+	/* border-collapse: collapse; */
+	position: absolute;
+	left: 173px;
+	top: 98px;
 }
 td {
   width: 94px;
