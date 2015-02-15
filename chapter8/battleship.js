@@ -1,22 +1,28 @@
 
-// start of the model, holds some game logic
+// start of the model, holds game state
 var model = {
-  // the size of the grid board
-  boardSize: ,
+  
+  // the size of the grid board for the board
+  boardSize: 7,
   // the number of ships in the game
-  numShips: ,
-  // the ship locations and hits
-  ships: ,
-  // how many ships have been sunk
-  shipsSunk: ,
+  numShips: 3,
   // the number of locations in each ship
-  shipLength: ,
+  shipLength: 3,
+  // how many ships have been sunk
+  shipsSunk: 0, 
+  // the ship locations and hits
+  ships: [
+		{ locations: ["06", "16", "26"], hits: ["", "", ""] },
+		{ locations: ["24", "34", "44"], hits: ["", "", ""] },
+		{ locations: ["10", "11", "12"], hits: ["", "", ""] }
+	],
+  
   // a method to fire on a ship and figure out if the shot is a hit or miss
   fire: function() {
   
   } 
 }
-
+// End of model
 
 // start of view
 // Notice we're defining an object and assigning it to the variable view
@@ -43,19 +49,6 @@ var view = {
   }
  
 };
-
-//testing the view locations work
-/*
-view.displayMiss("00"); // A0
-view.displayHit("34"); // D4
-view.displayMiss("55"); // F5
-view.displayHit("12"); // B2
-view.displayMiss("25"); // C5
-view.displayHit("26"); // C6
-view.displayMessage("Tap tap, is this thing on?");
-*/
-// end of view
- 
 
 
 
