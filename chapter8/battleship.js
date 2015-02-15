@@ -24,7 +24,7 @@ var view = {
  
 };
 
-// start of the model, holds game state
+// start of the model, holds game state, fire method provides the game logic for determining if a hit or miss has occurred
 var model = {
   // the size of the grid board for the board
   boardSize: 7,
@@ -71,22 +71,78 @@ var model = {
     return true; 
   }
 };
-
-model.fire("53"); // miss
-
-model.fire("06"); // hit
-model.fire("16"); // hit
-model.fire("26"); // hit
-
-model.fire("34"); // hit
-model.fire("24"); // hit
-model.fire("44"); // hit
-
-model.fire("12"); // hit
-model.fire("11"); // hit
-model.fire("10"); // hit
-
 // End of model
+
+
+// start of the controller, at high level, the controller glues everything together by getting a guess, 
+// processing the guess, and getting it to the model. Also keeps track of some of the admin details like
+// the current number of guesses and the players progress in the game. To do all this the controller relies 
+// on the model to keep the state of the game and on view to display the game.
+// Here are the responsiblities of the controller; 
+// Get and process the player’s guess (like “A0” or “B1”),
+// Keep track of the number of guesses, 
+// Ask the model to update itself based on the latest guess, 
+// Determine when the game is over (that is, when all ships have been sunk).
+//start of the controller
+var controller = {
+  guesses: 0,
+  processGuess: function(guess) {
+    if (location) {
+      
+    }
+  }
+}
+
+
+// helper function to parse a guess from the user ex from letter a to 0 in array
+// the guess is passed into the guess parameter
+function parseGuess(guess) {
+  // an array loaded with each letter that could be part of a valid guess
+  var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
+  // we check for null and to make sure the length is 2 characters
+  if (guess === null || guess.length !== 2) {
+    // if not we alert the player
+    alert("Oops, please enter a letter and a number on the board.");
+  } else {
+    // grab the first character of the guess 
+    firstChar = guess.charAt(0);
+    // using indexOf, we get back a number between zero and six that corresponds to the letter
+    var row = alphabet.indexOf(firstChar);
+    // we've added code to grab the second character in the string, which represents the column
+    var column = guess.charAt(1);
+    // we're checking to see if either of the row or column is not a number using the isNAN function
+    if (isNaN(row) || isNaN(column)) {
+        alert("Oops, that isn't on the board.");
+      //were making sure numbers are between zero and six and asking the model to tell us how big the board is
+      //and using that board for the comparision
+    } else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
+        alert("Oops, that's off the board!");
+    } else {
+      // using type version (row is a number and column is a string) to concatenate which ends up a string
+        return row + column;
+    }
+  }
+  // if we get here, there was a failed check along the way so return null
+  return null;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
