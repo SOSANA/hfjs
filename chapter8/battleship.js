@@ -74,26 +74,6 @@ var model = {
 // End of model
 
 
-// start of the controller, at high level, the controller glues everything together by getting a guess, 
-// processing the guess, and getting it to the model. Also keeps track of some of the admin details like
-// the current number of guesses and the players progress in the game. To do all this the controller relies 
-// on the model to keep the state of the game and on view to display the game.
-// Here are the responsiblities of the controller; 
-// Get and process the player’s guess (like “A0” or “B1”),
-// Keep track of the number of guesses, 
-// Ask the model to update itself based on the latest guess, 
-// Determine when the game is over (that is, when all ships have been sunk).
-//start of the controller
-var controller = {
-  guesses: 0,
-  processGuess: function(guess) {
-    if (location) {
-      
-    }
-  }
-}
-
-
 // helper function to parse a guess from the user ex from letter a to 0 in array
 // the guess is passed into the guess parameter
 function parseGuess(guess) {
@@ -126,23 +106,36 @@ function parseGuess(guess) {
   return null;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// start of the controller, at high level, the controller glues everything together by getting a guess, 
+// processing the guess, and getting it to the model. Also keeps track of some of the admin details like
+// the current number of guesses and the players progress in the game. To do all this the controller relies 
+// on the model to keep the state of the game and on view to display the game.
+// Here are the responsiblities of the controller; 
+// Get and process the player’s guess (like “A0” or “B1”),
+// Keep track of the number of guesses, 
+// Ask the model to update itself based on the latest guess, 
+// Determine when the game is over (that is, when all ships have been sunk).
+//start of the controller
+var controller = {
+  guesses: 0,
+  
+  processGuess: function(guess) {
+    var location = parseGuess(guess);
+    if (location) {
+      // if the player entered a valid guess we increase the number of guesses by one
+      this.guesses++;
+      // then we pass the row and column in the form of a string to the model's fire method. Remember, the fire 
+      // mehod returns true if the ship is hit
+      var hit = model.fire(location);
+      // if the guess was a hit, and the number of ships that are sunk is equal to the number of ships in th game,
+      // then show the player a message that they've sunk all the ships
+      if (hit && model.shipsSunk === model.numShips) {
+        // we'll show the player the total number of guess they took to sink the ship. The guess property is a property of 
+        // "this" object, the controller
+        view.displayMessage("You sank all my battleships, in " + this.guesses + " guesses");
+      }
+    }
+  }
+};
 
 
