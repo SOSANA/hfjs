@@ -44,6 +44,32 @@ var model = {
     }
     return true; 
   }
+generateShipLocations: function() {
+	  var locations;
+    // for each ship we want to generate locations for
+		for (var i = 0; i < this.numShips; i++) {
+      // we're using a do while loop here
+			do {
+        // we generate a new set of locations
+				locations = this.generateShip();
+        // and check to see if those locations overlap with any existing ships on the board. If they do,
+        // then we need to try again. So keep generating new locations until there's no collision
+			} while (this.collision(locations));
+      // once we have locations that work, we assign the locations to the ships locations property 
+      // in the model.ships array
+			this.ships[i].locations = locations;
+		}
+		console.log("Ships array: ");
+		console.log(this.ships);
+},
+
+generateShip: function() {
+	
+},
+
+collision: function(locations) {
+		
+}
 };
 // End of model
 
@@ -69,8 +95,25 @@ var view = {
     var cell = document.getElementById(location);
     //We do the same thing in displayMiss, only we set the class to "miss" which adds a miss image to the element
     cell.setAttribute("class", "miss");
-  }
- 
+  },
+ generateShipLocations: function() {
+   var locations;
+   // for each ship we want to generate locations
+   for (var i = 0; i < this.numShips; i++) {
+     // we're using a do while loop
+     do {
+       // we
+       locations = this.generateShip();
+     } while (this.collision(locations));
+     this.ships[i].locations = locations;
+   } 
+ },
+ generateShip: function() {
+   
+ },
+ collision: function() {
+   
+ }
 };
 // end of the view
 
