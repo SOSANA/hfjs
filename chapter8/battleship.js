@@ -140,6 +140,33 @@ function parseGuess(guess) {
 }
 
 // event handlers
+// this function will be called whenever you click the Fire! button
+function handleFireButton() {
+  // first we get a reference to the input form element using the input element's id, "guessInput"
+  var guessInput = document.getElementById("guessInput");
+  // then we get the guess from the input element. The guess is stored in the value property of the input element
+  var guess = guessInput.value.toUpperCase();
+  // We're passing the player's gues sto the controller
+  controller.processGuess(guess);
+  //This resets the form input element to be the empty string. That way you don't have to explicity select the text and 
+  //delete it before entering the next guess, which would be annoying
+  guessInput.value = "";
+}
+
+// like we learned in chapter 6, we want the browser to run init when the page is fully loaded
+// init - called when the page has completed loading
+window.onload = init;
+
+// using the fire button to initalize the guess
+function init() {
+  // first, we get a reference to the Fire! button using the button's id
+  var fireButton = document.getElementById("fireButton");
+  // then we can add a click handler function named handleFireButton to the button
+  fireButton.onclick = handleFireButton;
+}
+
+
+
 
 
 
