@@ -32,7 +32,7 @@ var model = {
       }
     }
     view.displayMiss(guess);
-    view.displayMessage("You missed.");
+    view.displayMessage("You missed!");
     return false;
   },
   //notifies the view when we get a hit or a miss in the model
@@ -154,15 +154,18 @@ function handleFireButton() {
 }
 
 // here's the key press handler. It's called whenever you press a key in the form input in the page
-// 
+// the browswer pases an (e) event object to the handler. this object has info about which key was pressed
 function handleKeyPress(e) {
   var fireButton = document.getElementById("fireButton");
   // in IE9 and earlier, the event object doesn't get passed
 	// to the event handler correctly, so we use window.event instead.
 	e = e || window.event;
-  
+  // if you press the RETURN key, the event's keyCode property will be set to 13, 
   if (e.keyCode === 13) {
+    // if that's the case then we want to cause the Fire! button to act like it was clicked. We 
+    // can do that by calling the fireButton's click method (basically tricking it into thinking it was clicked)
     fireButton.click();
+    // we return false so the form doesn't do anything else (like try to submit itself)
     return false;
   }
 }
