@@ -153,6 +153,20 @@ function handleFireButton() {
   guessInput.value = "";
 }
 
+// here's the key press handler. It's called whenever you press a key in the form input in the page
+// 
+function handleKeyPress(e) {
+  var fireButton = document.getElementById("fireButton");
+  // in IE9 and earlier, the event object doesn't get passed
+	// to the event handler correctly, so we use window.event instead.
+	e = e || window.event;
+  
+  if (e.keyCode === 13) {
+    fireButton.click();
+    return false;
+  }
+}
+
 // like we learned in chapter 6, we want the browser to run init when the page is fully loaded
 // init - called when the page has completed loading
 window.onload = init;
@@ -163,7 +177,12 @@ function init() {
   var fireButton = document.getElementById("fireButton");
   // then we can add a click handler function named handleFireButton to the button
   fireButton.onclick = handleFireButton;
+  var guessInput = document.getElementById("guessInput");
+  // Add a new handler. This one handles key press events from the HTML input field.
+  guessInput.onkeypress = handleKeyPress;
 }
+
+
 
 
 
