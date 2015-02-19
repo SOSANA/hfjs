@@ -44,32 +44,52 @@ var model = {
     }
     return true; 
   }
-generateShipLocations: function() {
-	  var locations;
+  generateShipLocations: function() {
+    var locations;
     // for each ship we want to generate locations for
 		for (var i = 0; i < this.numShips; i++) {
       // we're using a do while loop here
-			do {
+		  do {
         // we generate a new set of locations
-				locations = this.generateShip();
+			  locations = this.generateShip();
         // and check to see if those locations overlap with any existing ships on the board. If they do,
         // then we need to try again. So keep generating new locations until there's no collision
-			} while (this.collision(locations));
-      // once we have locations that work, we assign the locations to the ships locations property 
-      // in the model.ships array
-			this.ships[i].locations = locations;
-		}
-		console.log("Ships array: ");
-		console.log(this.ships);
-},
+			  } while (this.collision(locations));
+         // once we have locations that work, we assign the locations to the ships locations property 
+        // in the model.ships array
+		  	this.ships[i].locations = locations;
+		  }
+		  console.log("Ships array: ");
+		  console.log(this.ships);
+  },
 
-generateShip: function() {
-	
-},
+  generateShip: function() {
+   // we use Math.random to generate a number between 0 and 1, and multiply the result by 2, to get a number 
+   // between 0 and 2 (not including 2). We then turn that into a 0 or a 1 using Math.floor
+	 var direction = Math.floor(Math.random() * 2);
+   var row;
+   var col;
+   if (direction === 1) {
+     // we're saying that if the direction is a 1, that means we'll create a horizontal ship
+     //generate a starting location for a horizontal ship
+   } else {
+      // and if direction is 0, that means we create a vertical ship
+      // generate a starting lcoation for a vertical ship
+    }
+   var newShipLocations = [];
+   for (var i = 0; i < this.shipLength; i++) {
+     if (direction === 1) {
+       // add location to array for new horizontal ship
+     } else {
+       // add location to array for new vertical ship
+     }
+   }
+   return newShipLocations;
+ },
 
-collision: function(locations) {
+  collision: function(locations) {
 		
-}
+  }
 };
 // End of model
 
