@@ -10,9 +10,11 @@ var model = {
   shipLength: 3,
   // the ship locations and hits
   ships: [
-		{ locations: ["06", "16", "26"], hits: ["", "", ""] },
-		{ locations: ["24", "34", "44"], hits: ["", "", ""] },
-		{ locations: ["10", "11", "12"], hits: ["", "", ""] }
+    
+    { locations: [0, 0, 0], hits: ["", "", ""] },
+		{ locations: [0, 0, 0], hits: ["", "", ""] },
+		{ locations: [0, 0, 0], hits: ["", "", ""] }
+    
 	],
   // a method to fire on a ship and figure out if the shot is a hit or miss
   fire: function(guess) {
@@ -43,7 +45,8 @@ var model = {
       }
     }
     return true; 
-  }
+  },
+  
   generateShipLocations: function() {
     var locations;
     // for each ship we want to generate locations for
@@ -70,12 +73,12 @@ var model = {
    var row;
    var col;
    if (direction === 1) {
-     // we're saying that if the direction is a 1, that means we'll create a horizontal ship
-     //generate a starting location for a horizontal ship
+     // if the direction is a 1, that means we'll create a horizontal ship
+     // generate a starting location for a ship on the board
      row = Math.floor(Math.random() * this.boardSize);
      col = Math.floor(Math.random() * (this.boardSize - (this.shipLength + 1)));
    } else {
-      // and if direction is 0, that means we create a vertical ship
+      // if direction is 0, that means we create a vertical ship
       // generate a starting lcoation for a vertical ship
       row = Math.random(Math.random() * (this.boardSize - (this.shipLength + 1)));
       col = Math.random(Math.random() * this.boardSize);
@@ -97,9 +100,26 @@ var model = {
    // once we're generated all the locations, we return the array 
    return newShipLocations;
  },
-
+   
   collision: function(locations) {
-		
+    // for each ship already on the board
+		for (var i = 0; i < this.numShips; i++) {
+      var ship = model.ships[i];
+      // check to see if any of the lcoations in the new ships locations array are in an existing
+      // ship's locations array
+      for (var j = 0; j < locations.length; j++) {
+        // using indexOf to check if the location already exists in a ship so if the index is greater 
+        // than or equal to 0, we know it matched an existing location, so we return true (meaning we found a
+        // collision)
+        if (ship.locations.indexOf(locations[j]) >= 0) {
+          // this stops the iteration of both loops immediately, exiting the function and returning true
+          return true;
+        }
+      }
+    }
+    // if we get here and haven't returned, then we never found a match for any of the locations we were checking,
+    // so we return false (there was no collision)
+    return false;
   }
 };
 // End of model
@@ -133,10 +153,13 @@ var view = {
    for (var i = 0; i < this.numShips; i++) {
      // we're using a do while loop
      do {
-       // we
+       
        locations = this.generateShip();
+     
      } while (this.collision(locations));
+     
      this.ships[i].locations = locations;
+   
    } 
  },
  generateShip: function() {
@@ -257,6 +280,9 @@ function init() {
   var guessInput = document.getElementById("guessInput");
   // Add a new handler. This one handles key press events from the HTML input field.
   guessInput.onkeypress = handleKeyPress;
+  // calling generateShipLocations from the init function so it happens riht when you load the game vefore you 
+  // start playing. That way all the ships have locations read to go when you start playing
+  model.generateShipLocations();
 }
 
 
