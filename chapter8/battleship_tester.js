@@ -1,11 +1,3 @@
-// To use this tester file, you'll need to leave the view, model, controller
-// objects in place, but comment out all the testing code except the parts
-// you're using.  Remember you can use 
-/* 
-   code here 
-*/
-// to comment out large chunks of code.
-
 
 // testing the view
 // start of view
@@ -154,8 +146,8 @@ var model = {
    } else {
       // if direction is 0, that means we create a vertical ship
       // generate a starting lcoation for a vertical ship
-      row = Math.random(Math.random() * (this.boardSize - (this.shipLength + 1)));
-      col = Math.random(Math.random() * this.boardSize);
+      row = Math.floor(Math.random() * (this.boardSize - (this.shipLength + 1)));
+      col = Math.floor(Math.random() * this.boardSize);
     }
    // for the new ship locations, we'll start with an empty array and add the location one by one
    var newShipLocations = [];
@@ -310,7 +302,7 @@ function handleFireButton() {
   var guessInput = document.getElementById("guessInput");
   // then we get the guess from the input element. The guess is stored in the value property of the input element
   var guess = guessInput.value.toUpperCase();
-  // We're passing the player's gues sto the controller
+  // We're passing the player's guess sto the controller
   controller.processGuess(guess);
   //This resets the form input element to be the empty string. That way you don't have to explicity select the text and 
   //delete it before entering the next guess, which would be annoying
