@@ -26,6 +26,8 @@ var view = {
  
 }; 
 // end of the view
+
+
 /*
 // view test drive
 view.displayMiss("00");
@@ -58,6 +60,7 @@ var ship1 = ships[0];
 var hits = ship1.hits; 
     hits[2] = "hit";
 */
+
 
 // testing the model
 // start of the model, holds game state, fire method provides the game logic for determining if a hit or miss has occurred
@@ -269,7 +272,7 @@ var controller = {
       // then we pass the row and column in the form of a string to the model's fire method. Remember, the fire 
       // mehod returns true if the ship is hit
       var hit = model.fire(location);
-      // if the guess was a hit, and the number of ships that are sunk is equal to the number of ships in th game,
+      // if the guess was a hit, and the number of ships that are sunk is equal to the number of ships in the game,
       // then show the player a message that they've sunk all the ships
       if (hit && model.shipsSunk === model.numShips) {
         // we'll show the player the total number of guess they took to sink the ship. The guess property is a property of 
@@ -295,6 +298,7 @@ controller.processGuess("B1"); // hit
 controller.processGuess("B2"); // hit
 */
 
+
 // event handlers
 // this function will be called whenever you click the Fire! button
 function handleFireButton() {
@@ -302,7 +306,7 @@ function handleFireButton() {
   var guessInput = document.getElementById("guessInput");
   // then we get the guess from the input element. The guess is stored in the value property of the input element
   var guess = guessInput.value.toUpperCase();
-  // We're passing the player's guess sto the controller
+  // We're passing the player's guess to the controller
   controller.processGuess(guess);
   //This resets the form input element to be the empty string. That way you don't have to explicity select the text and 
   //delete it before entering the next guess, which would be annoying
@@ -326,6 +330,7 @@ function handleKeyPress(e) {
   }
 }
 
+
 // like we learned in chapter 6, we want the browser to run init when the page is fully loaded
 // init - called when the page has completed loading
 window.onload = init;
@@ -339,12 +344,7 @@ function init() {
   var guessInput = document.getElementById("guessInput");
   // Add a new handler. This one handles key press events from the HTML input field.
   guessInput.onkeypress = handleKeyPress;
-  // calling generateShipLocations from the init function so it happens riht when you load the game vefore you 
+  // calling generateShipLocations from the init function so it happens right when you load the game vefore you 
   // start playing. That way all the ships have locations read to go when you start playing
   model.generateShipLocations();
 }
-
-
-
-
-
