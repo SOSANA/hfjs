@@ -92,27 +92,40 @@ var model = {
       var index = ship.locations.indexOf(guess);
       if (index >= 0) {
         ship.hits[index] = "hit";
+        // Notify the view that we got a hit at the lcoation in guess
         view.displayHit(guess);
+        // ask the view to display the message "HIT!"
         view.displayMessage("HIT!");
-        
+        // add a check here, after we know for sure we have a hit. If the ship is sunk, then we increase 
+        // the number of ships that sunk the mode's shipsSunk property 
         if (this.isSunk(ship)) {
+          // let the player know that this hit sank the battleship
           view.displayMessage("You sank my battleship!");
           this.shipsSunk++;
         }
         return true;
       }
     }
+    // Notify the view that we got a miss at the locaiton in guess
     view.displayMiss(guess);
+    // ask the view to display the message "You missed". Remember taht the methods in the view object
+    // add the "hit" or "miss" class to the element with the id of row and column in the guess string. 
+    // So the view translates "hit" in hits array into a "hit" in HTML is just display, " hit"in model 
+    // is its the actual state 
     view.displayMessage("You missed.");
     return false;
   },
-  //notifies the view when we get a hit or a miss in the model
+  // notifies the view when we get a hit or a miss in the model. We call the method isSunk. It's going to 
+  // take a ship and return true if it's sunk and false if it is still floating
   isSunk: function(ship) {
+    // this mehod takes a ship, and then checks every possible location for a hit
     for (var i = 0; i < this.shipLength; i++) {
       if (ship.hits[i] !== "hit") {
+        // if there's a location that doesn't have a hit, then the ship is still floating, so return false
         return false;      
       }
     }
+    // otherwise this ship is sunk! return true
     return true; 
   },
   
@@ -136,8 +149,9 @@ var model = {
   },
 
   generateShip: function() {
-   // we use Math.random to generate a number between 0 and 1, and multiply the result by 2, to get a number 
-   // between 0 and 2 (not including 2). We then turn that into a 0 or a 1 using Math.floor
+   // we use Math.random() to generate a decimal number between 0 and 1 (not including exactly 1), and 
+   // multiply the result by 2, to get a number between 0 and 2 (not including 2). we can use Math.floor() 
+   // to round down values to nearest interger value and turn that into a 0 or a 1 bu using Math.floor ()
 	 var direction = Math.floor(Math.random() * 2);
    var row;
    var col;
@@ -148,7 +162,7 @@ var model = {
      col = Math.floor(Math.random() * (this.boardSize - (this.shipLength + 1)));
    } else {
       // if direction is 0, that means we create a vertical ship
-      // generate a starting lcoation for a vertical ship
+      // generate a starting l0cation for a vertical ship
       row = Math.floor(Math.random() * (this.boardSize - (this.shipLength + 1)));
       col = Math.floor(Math.random() * this.boardSize);
     }
