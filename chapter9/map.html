@@ -4,11 +4,24 @@
   <meta charset="utf-8">
   <title>Pirates Booty</title>
   <script>
+    window.onload = init;
     
+    function init() {
+      var map = document.getElementById("map");
+      // we're assigning a handler to its onmousemove property
+      map.onmousemove = showCoords;
+    }
+    
+    function showCoords(eventObj) {
+      var coords = document.getElementById("coords");
+      var x = eventObj.clientX;
+      var y = eventObj.clientY;
+      coords.innerHTML = "map coordinates: " + x + ", " + y;
+    }
   </script>
 </head>
 <body>
-	<img id="map" src="map.jpg">
+	<img id="map" src="img/map.jpg">
 	<p id="coords">Move mouse over map to find coordinates...</p>
 </body>
 </html>
