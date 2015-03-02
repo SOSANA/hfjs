@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> Image Guess </title>
+  <style>
+	body { margin: 20px; }
+	/*img { margin: 20px; }  /* added in second step */
+  </style>
+  <script>
+    window.onload = init;
+    // create a function init, and assign it to the window's onload property to
+    // make sure it doesn't run until the page is fully loaded.
+    function init() {
+      // In the code of init, we'll grab a reference to the image with id="zero"
+      // remember in javascript the order in which you define your functions doesn't 
+      // matter. So we can define init after we assign it to the onload property
+      var image = document.getElementById("zero");
+      // using the image object from the DOM, we're assigning a handler to its onclick property
+      image.onclick = showAnswer;
+    };
+    function showAnswer() {
+      // first we'll get the image from the DOM again
+      var image = document.getElementById("zero");
+      //once we get the image, we can change it by setting its src property to the unblurred image
+      image.src = "img/zero.jpg";
+    }
+  </script>
+</head>
+<body>
+	<img id="zero" src="img/zeroblur.jpg">
+</body>
+</html>
