@@ -4,7 +4,10 @@
 <meta charset="utf-8">
 <title>Don't resize me, I'm ticklish!</title>
 <script>
-    
+    function resize() {
+      var element = document.getElementById("display");
+      element.innerHTML = element.innerHTML + " that tickles!";
+    }
 </script>
 </head>
 <body>
@@ -12,6 +15,7 @@
     Whatever you do, don’t resize this window! I'm warning you!
 </p>
 <script>
+    // using the window onresize property to notify the handler of brower window changes
     window.onresize = resize;
 </script>
 </body>
