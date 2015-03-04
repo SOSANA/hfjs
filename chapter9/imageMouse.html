@@ -34,12 +34,14 @@
         image.src = name;
         // we call the setTimeout to setup an event that will fire in two seconds. We'll use reblur 
         // (below) as our handler and pass it 2000 (2 seconds) and also an argument, the image to reblur
-        setTimeout(reblur, 2000, image);
+        // removing setTimeout as there is no need with onmouseover
+        //setTimeout(reblur, 2000, image);
     };
     // the handler can take the image, get the id of the image and use that to create the name of the
     // blurred image. When we set the src of the image to that name, it will replace the clear image with 
     // the blured image
-    function reblur(image) {
+    function reblur(eventObj) {
+      var image = eventObj.target;
       var name = image.id;
       name = "img/" + name + "blur.jpg";
       image.src = name;

@@ -8,3 +8,4 @@ function timerHandler() {
 //setTimeout(timerHandler, 5000);
 // this sets a interval off 500 times for every 5 seconds
 setTimeout(timerHandler, 5000).setInterval(timerHandler, 500);
+
