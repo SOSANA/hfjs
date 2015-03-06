@@ -31,21 +31,25 @@
   function checkNoFlyList(passenger) {
      return (passenger.name === "Dr. Evel");
   }
-  // here's the function to ccheck to see if a passenger has paid. All we do is check the paid 
+  // this function to checks to see if a passenger has paid. All we do is check the paid 
   // property of the passenger. If they have not paid, then we return true.
   function checkNotPaid(passenger) {
     return (!passenger.paid);
   }
-  // passing a function to a function is easy. We just use the name of the function as the argument
+  // we're passing a function to a function
+  // We just use the name of the function as the argument
   // and also passing the checkNoFlyList function. So process Passengers will check each passenger 
   // to see if they are on the no-fly list
   var allCanFly = processPassengers(passengers, checkNoFlyList);
   if (!allCanFly) {
+    // if any of the passengers are on the no-fly list, we get back a false, and a msg in console
     console.log("The plane can't take off: we have a passenger on the no-fly list.");
   }
-  
+  // we're passing the checkNotPaid function in as an argument. processPassengers will check each passenger to
+  // see if they've paid
   var allPaid = processPassengers(passengers, checkNotPaid);
   if (!allPaid) {
+    // if any of the passengers haven't paid, we'll get back false, and a msg in the console
     console.log("The plane can't take off: not everyone has paid.");
   }
   
