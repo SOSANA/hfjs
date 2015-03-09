@@ -1,9 +1,9 @@
  // All passengers stored in an array. Each passenger is represented by an object with 
   // a name and paid property
-  var passengers = [ { name: "Jane Doloop", paid: true },
-                     { name: "Dr. Evel", paid: true },
-                     { name: "Sue Property", paid: false },
-                     { name: "John funcall", paid: true },
+  var passengers = [ { name: "Jane Doloop ", paid: true },
+                     { name: "Dr. Evel ", paid: true },
+                     { name: "Sue Property ", paid: false },
+                     { name: "John funcall ", paid: true },
                      { name: "Joaquin Sosa ", paid: true },
                      { name: "Benico Sosa ", paid: false },
                      { name: "Isabella Sosa ", paid: true } ];
@@ -52,4 +52,36 @@
     // if any of the passengers haven't paid, we'll get back false, and a msg in the console
     console.log("The plane can't take off: not everyone has paid.");
   }
+
+  // my solution to exercise which is same results as book solution
+  /*
+  function printPassenger(passengers) {
+    var passengersName = passengers.name;
+    var passengersPaid = passengers.paid;
+    if (passengersPaid === true) {
+      console.log (passengersName + "has paid");
+    } else {
+      console.log (passengersName + "has not paid");
+    }
+  }
+  
+  processPassengers(passengers, printPassenger);
+  */
+
+  // books solution to exercise
+  function printPassenger(passenger) {
+    var message = passenger.name;
+    if (passenger.paid) {
+      message = message + " has paid";
+    } else {
+      message = message + "has not paid";
+    }
+    console.log(message);
+    // this return value doesn't matter that much because we're ignoring the result from  processPassengers
+    // in this case
+    return false;
+  }
+
+  processPassengers(passengers, printPassenger);
+
   
