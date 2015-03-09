@@ -9,28 +9,28 @@ function fun(echo) {
 	console.log(echo);
 };
 
-fun("hello");
+fun("hello"); // "hello"
 
 function boo(aFunction) {
 	aFunction("boo");
 }
 
-boo(fun);
+boo(fun); // "boo"
 
-console.log(fun);
+console.log(fun); // prints function fun function fun(echo) { console.log(echo);}
 
-fun(boo);
+fun(boo); // prints function boo function boo(aFunction) {aFunction("boo");
 
 var moreFun = fun;
 
-moreFun("hello again");
+moreFun("hello again"); // "hello again"
 
 function echoMaker() {
 	return fun;
 }
 
 var bigFun = echoMaker();
-bigFun("Is there an echo?");
+bigFun("Is there an echo?"); // "Is there an echo?"
 
 
 </script> 
