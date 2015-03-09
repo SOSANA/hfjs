@@ -17,14 +17,14 @@ function boo(aFunction) {
 
 boo(fun); // "boo"
 
-console.log(fun); // prints function fun function fun(echo) { console.log(echo);}
+console.log(fun); // prints function fun, function fun(echo) { console.log(echo);}
 
-fun(boo); // prints function boo function boo(aFunction) {aFunction("boo");
+fun(boo); // prints function boo, function boo(aFunction) {aFunction("boo");
 
 var moreFun = fun;
 
 moreFun("hello again"); // "hello again"
-
+// preview of whats coming up
 function echoMaker() {
 	return fun;
 }
