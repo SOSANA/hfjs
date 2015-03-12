@@ -15,13 +15,15 @@
 var passengers = [ { name: "Jane Doloop ", paid: true, ticket: "coach" },
                    { name: "Dr. Evel ", paid: true, ticket: "firstclass" },
                    { name: "Sue Property ", paid: false, ticket: "firstclass" },
-                   { name: "John funcall ", paid: true, ticket: "coach" },
+                   { name: "John funcall ", paid: true, ticket: "premium" },
                    { name: "Joaquin Sosana ", paid: true, ticket: "firstclass" },
                    { name: "Benico Sosana ", paid: true, ticket: "firstclass" },
                    { name: "Isabella Sosana ", paid: true, ticket: "firstclass" } ];
 
 // function has two parameters, the first is an array of passengers and second is
 // a function that knows how to look for some condition in the passengers.
+// we don't care about the result here, we're just using 
+// processPassengers to display the passenger list
 function processPassengers(passengers, testFunction) {
   // we iterate through all the passengers, one at time
   for (i = 0; i < passengers.length; i++) {
@@ -106,31 +108,72 @@ function createDrinkOrder(passenger) {
   if (passenger.ticket === "firstclass") {
     // if the passenger is first call, we create a function that knows how to take a first class order
     orderFunction = function() {
-      // if the pasenger's ticket is a first class ticket then we issue an alert to ask for cocktail or a wine
+      // if the pasenger's ticket is a first class ticket then we issue an alert to ask 
       alert("Would you like a cocktail or wine?");
     };
-  } else {
+  } else if (passenger.ticket === "premium") {
+      orderFunction = function() {
+      // if the pasenger's ticket is a premium class ticket then we issue an alert to ask 
+      alert("Would you like a wine, cola or water?");
+      };
+    } else {
       // otherwise create a function to take a coach class order
       orderFunction = function() {
-        // if they have a coach ticket, then ask if they want a cola or water
+        // if they have a coach ticket, then we issue an alert to ask
         alert("Your choice is cola or water.");
       };
-  }
+      }
   // return the function
   return orderFunction;
 }
 
-// returning a function from a function 
+// adding a new function for dinner menu
+  function createDinnerOrder(passenger) {
+    var orderFunction;
+    if (passenger.ticket === "firstclass") {
+      orderFunction = function() {
+        alert("Would you like chicken or pasta?");
+      } 
+    } else if (passenger.ticket === "premium") {
+      orderFunction = function() {
+        alert("Would you like snack box or cheese plate");
+      };
+    } else {
+      orderFunction = function() {
+        alert("Would you like peanuts or pretzels?");
+      };
+    }
+    return orderFunction;
+  }
+
+// function for picking up the trash
+function pickupTrash() {
+	alert("Can I have your trash, please?");
+}
+
+// returning a three different function from a function 
+// We'll call createDrinkOrder to use various functions over and over to take drink and dinner orders
+// and as well pick up the trash
 function serveCustomer(passenger) {
-  // createDrinkOrder now returns a function, which we store in the getDrinkOrderFunction
+  // createDrinkOrder & createDinnerOrder now returns a function, which we store in the 
+  // getDrinkOrderFunction & getDinnerOrderFunction
   var getDrinkOrderFunction = createDrinkOrder(passenger);
+  var getDinnerOrderFunction = createDinnerOrder(passenger);
+  
+  // get drink order
   getDrinkOrderFunction();
+  
   // get dinner order
+  getDinnerOrderFunction();
+  
   getDrinkOrderFunction();
   getDrinkOrderFunction();
+  
   // show movie
   getDrinkOrderFunction();
+  
   // pick up trash
+	pickupTrash();
 }
 // function to take some orders
 function servePassengers(passengers) {
