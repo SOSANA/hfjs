@@ -2,7 +2,8 @@
    Functions in javaScript are values, values that can be assigned to variables. Values such as 
    numbers, booleans, strings, and objects. We can do all sorts of things with those values 
    such as pass them to functions, return them from functions or even store them in objects or 
-   arrays.
+   arrays. When we design functions, a good rule of thumb is to have them do only one thing, 
+   but do it really well
    First class values (refered to by computer scientists) are assign the value to a variable 
    (or store it in a data structure like an array or object), pass the value to a function, return 
    the value from a function. Bellow we are assigning functions to variables, passing functions to 
@@ -95,15 +96,51 @@ function printPassenger(passenger) {
 // passing a function to a function, which is function printPassenger
 processPassengers(passengers, printPassenger);
 
-// function for things a flight attendant needsd to do to serve each pasenger
-function serveCustomer(passenger) {
-  // get drink order
-  
-  // get dinner order
-  
-  // pick up trash
-  
+
+// get drink order and return a function
+// It's going to return a function that knows how to take a drink order
+function createDrinkOrder(passenger) {
+  // creating a variable to hold the function we want to return
+  var orderFunction;
+  // we execute the conditional code to check the passenger's ticket type only once
+  if (passenger.ticket === "firstclass") {
+    // if the passenger is first call, we create a function that knows how to take a first class order
+    orderFunction = function() {
+      // if the pasenger's ticket is a first class ticket then we issue an alert to ask for cocktail or a wine
+      alert("Would you like a cocktail or wine?");
+    };
+  } else {
+      // otherwise create a function to take a coach class order
+      orderFunction = function() {
+        // if they have a coach ticket, then ask if they want a cola or water
+        alert("Your choice is cola or water.");
+      };
+  }
+  // return the function
+  return orderFunction;
 }
+
+// returning a function from a function 
+function serveCustomer(passenger) {
+  // createDrinkOrder now returns a function, which we store in the getDrinkOrderFunction
+  var getDrinkOrderFunction = createDrinkOrder(passenger);
+  getDrinkOrderFunction();
+  // get dinner order
+  getDrinkOrderFunction();
+  getDrinkOrderFunction();
+  // show movie
+  getDrinkOrderFunction();
+  // pick up trash
+}
+// function to take some orders
+function servePassengers(passengers) {
+  // iterating over the passengers in the passengers array, and calling serveCustomer on each passenger
+  for (var i = 0; i < passengers.length; i ++) {
+    serveCustomer(passengers[i]);
+  }
+}
+// calling servePassengers to get it all going
+servePassengers(passengers);
 
   
 
