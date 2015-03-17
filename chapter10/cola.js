@@ -4,6 +4,7 @@
  * 1: place the first item after the second item 
  * 0: the items are equivalent, you can leave them in place 
  * -1: place the first item before the second item.
+ * You can use - for numbers, and < or > for alphabetical
 */
 
 // each item in the products array is an object
@@ -33,6 +34,9 @@ function compareSold(colaA, colaB) {
 
 // function for sorting name
 function compareName(colaA, colaB) {
+    // returns names property ascending alphabetically
+    return colaA.name > colaB.name;
+    /*
     if (colaA.name > colaB.name) {
 		return 1;
 	} else if (colaA.name === colaB.name) {
@@ -40,6 +44,7 @@ function compareName(colaA, colaB) {
 	} else {
 		return -1;
 	}
+    */
 }
 
 // function for sorting calories
@@ -55,6 +60,9 @@ function compareCalories(colaA, colaB) {
 
 // function for sorting color
 function compareColor(colaA, colaB) {
+    // returns names property ascending alphabetically
+    return colaA.color > colaB.color;
+    /*
     if (colaA.color > colaB.color) {
 		return 1;
 	} else if (colaA.color === colaB.color) {
@@ -62,6 +70,7 @@ function compareColor(colaA, colaB) {
 	} else {
 		return -1;
 	}
+    */
 }
 
 
