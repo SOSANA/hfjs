@@ -1,13 +1,12 @@
 /* 
-   Functions in javaScript are values, values that can be assigned to variables. Values such as 
-   numbers, booleans, strings, and objects. We can do all sorts of things with those values 
-   such as pass them to functions, return them from functions or even store them in objects or 
-   arrays. When we design functions, a good rule of thumb is to have them do only one thing, 
-   but do it really well
-   First class values (refered to by computer scientists) are assign the value to a variable 
-   (or store it in a data structure like an array or object), pass the value to a function, return 
-   the value from a function. Bellow we are assigning functions to variables, passing functions to 
-   functions, and returning functions from functions.
+ * Functions in javaScript are values, values that can be assigned to variables. Values such as 
+ * numbers, booleans, strings, and objects. We can do all sorts of things with those values 
+ * such as pass them to functions, return them from functions or even store them in objects or 
+ * arrays. When we design functions, a good rule of thumb is to have them do only one thing, 
+ * but do it really well First class values (refered to by computer scientists) are assign the 
+ * value to a variable (or store it in a data structure like an array or object), pass the value 
+ * to a function, return the value from a function. Bellow we are assigning functions to variables, 
+ * passing functions to functions, and returning functions from functions.
 */
 
 // All passengers stored in an array. Each passenger is represented by an object with 
