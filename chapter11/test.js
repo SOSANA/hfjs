@@ -1,4 +1,8 @@
 /*
+ * A parameter is what's given in the function declaration/definition/prototype, 
+ * the actual argument is what's passed when calling the function, an instance of 
+ * a formal parameter.
+ * 
  * An anonymous function is just a function expression without a name that’s 
  * used where we’d normally use a function reference.
  *  
@@ -18,6 +22,7 @@
  * 
 */
 
+
 // vaccine exercise
 // before applying anonymous function
 /*
@@ -29,6 +34,7 @@ function vaccine(dosage) {
 
 administer(patient, vaccine, time);
 */
+
 /*
 // after applying anonymous function
 administer(patient, function (dosage) { 
