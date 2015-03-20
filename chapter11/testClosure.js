@@ -11,8 +11,27 @@
  * 
 */
 
+function makeTimer(doneMessage, n) {
+    setTimeout(function() {
+        alert(doneMessage);
+    }, n);
+}
+makeTimer("Cookies are done!", 1000);
+// brain power
+/*
+function handler() {
+    alert(doneMessage);
+}
+function makeTimer(doneMessage, n) {
+    setTimeout(handler, n);
+}
+makeTimer("Cookies are done!", 1000);
+*/
+
+
 // Exercise makePassword, multiplies, counter
 // makePassword exercise
+/*
 function makePassword(password) {
     // the function that's returned from makePassword is a closure with an evironment 
     // containing the free variable password;
@@ -30,7 +49,49 @@ var tryGuess = makePassword("secret");
 // for the password in the environment for tryGuess
 console.log("Guessing 'nope': " + tryGuess("nope"));
 console.log("Guessing 'secret': " + tryGuess("secret"));
-// multiplies exercise
+*/
+
+// multiply exercise
+/*
+function multN(n) {
+    // the function that's returned from multN is a closure with an environment containing
+    // the free variable n
+    return function multBy(m) {
+        return n*m;
+    };
+}
+// So we invoke multN(3) and get back a funciton that multiplies any number you give by 3
+var multBy3 = multN(3);
+console.log("Multiplying 2: " + multBy3(2));
+console.log("Multiplying 2: " + multBy3(3));
+*/
+
+// counter exercise
+// modified version of the counter we just created. makeCounter takes no arguments, 
+// but defines a count variable. It then creates and returns an object with one method, 
+// increment. This method increments the count variable and returns it.
+/*
+function makeCounter() {
+    var count = 0;
+    // this is similar to our previous makeCounter function, except now we're returning an 
+    // object with a increment method, instead of returning a function directly
+    return {
+        increment: function() {
+            // the increment method has a free variable, count. So, increment is a closure 
+            // with an environment containing the variable count.
+            count++;
+            return count;
+        }
+    };
+}
+// we call makeCounter and get back an object with a method(that is a closure)
+var counter =makeCounter();
+// we invoke the method in the usual way, and when we do, the method references the variable
+// count in its environment
+console.log(counter.increment());
+console.log(counter.increment());
+console.log(counter.increment());
+*/
 
 
 // Using closures to implement a magic counter
