@@ -9,27 +9,70 @@
  * access to its own scope (variables defined between its curly brackets), it has 
  * access to the outer function's variables, and it has access to the global variables
  * 
+ * Remember that closure conatains the actual environment, not a copy. often misleads people 
+ * learning closures is that they think the environment in the closure must have a copy of all 
+ * the variables and their values. It doesn’t. In fact, the environment references the live 
+ * variables being used by your code, so if a value is changed by code outside your closure 
+ * function, that new value is seen by your closure function when it is evaluated.
 */
 
-function makeTimer(doneMessage, n) {
+// pass a function to a function. The function we pass will be executed in a completely different context 
+// than the one in which it was defined. 
+// modify our bake example in brain power to show closure contains actual environment, not a copy
+function setTimer(doneMessage, n) {
+    // The closure is created here
+    // // When we call setTimeout and pass to it the function expression, a closure is created 
+    // containing the function along with a reference to the environment.
     setTimeout(function() {
+        // free variable doneMessage that we are using as a handler for setTimeout
+        alert(doneMessage);
+    }, n);
+    // we're changin the value of doneMessage after we call setTimeout
+    // Then, when we change the value of doneMessage to “OUCH!” outside of the closure, it’s 
+    // changed in the same environment that is used by the closure.
+    doneMessage = "OUCH!";
+}
+// 1000 milliseconds later, the function in the closure is called. This function references the 
+// doneMessage variable, which is now set to “OUCH!” in the environment, so we see “OUCH!” in the alert.
+// not "Cookies are done!"
+setTimer("Cookies are done!", 1000);
+
+// brain power 
+// pass a function to a function. 
+// The function we pass will be executed in a completely different context than the one in which it was defined.
+// Here, we’re passing a function expression that contains a free variable, doneMessage , to the function 
+// setTimeout . We evaluate the function expression to get a function reference, which is then passed to setTimeout. 
+// The setTimeout method holds on to this function (which is a function plus an environment—in other words, a closure) 
+// and then 1000 milliseconds later it calls that function. And again, the function we’re passing into setTimeout is 
+// a closure because it comes along with an environment that binds the free variable, doneMessage , to the string 
+/*
+function makeTimer(doneMessage, n) {
+    // we use a have a function
+    setTimeout(function() {
+        // free variable doneMessage that we are using as a handler for setTimeout
         alert(doneMessage);
     }, n);
 }
+// this function will be executed 1000 milliseconds (1 second) from now, long after the 
+// function makeTimer has completed
 makeTimer("Cookies are done!", 1000);
-// brain power
+*/
+
+// What happens if we did it like this?
+// will get undefined errors, doneMessage is undefined
 /*
-function handler() {
-    alert(doneMessage);
-}
-function makeTimer(doneMessage, n) {
-    setTimeout(handler, n);
-}
+function handler() { 
+    alert(doneMessage); 
+} 
+function makeTimer(doneMessage, n) { 
+    setTimeout(handler, n); 
+} 
 makeTimer("Cookies are done!", 1000);
 */
 
 
 // Exercise makePassword, multiplies, counter
+// Returning a function from a function
 // makePassword exercise
 /*
 function makePassword(password) {
