@@ -16,9 +16,44 @@
  * function, that new value is seen by your closure function when it is evaluated.
 */
 
+// sharpen your pencil
+// Your task is to figure out not just what this code computes, but how it computes. To do that, 
+// go in reverse. That is, take out the anonymous function, assign it to a variable, and then use 
+// that variable where the function expression used to be. Is the code more obvious now? So, what 
+// does it do?
+
+// Here's the function extracted. We just called it eat. You could have made this a function declaration 
+// after anonymous function
+var eat = (function(food){
+    if (food === "cookies") {
+        alert("More please");
+    } else if (food === "cake") {
+    alert("Yum yum")
+    }
+});
+// callback with argument
+(eat)("cookies");
+// or you can do a callback like this  
+//(eat("cookies"));
+
+// before variable expression
+// computes an anonymous function with a conditional, that checks if the food argument is equal to 
+// "cookies" or "cake" and returns alert "More Please" when called back is complete
+/*
+(function(food){
+    if (food === "cookies") {
+        alert("More please");
+    } else if (food === "cake") {
+    alert("Yum yum")
+    }
+})("cookies");
+*/
+
+
 // pass a function to a function. The function we pass will be executed in a completely different context 
 // than the one in which it was defined. 
 // modify our bake example in brain power to show closure contains actual environment, not a copy
+/*
 function setTimer(doneMessage, n) {
     // The closure is created here
     // // When we call setTimeout and pass to it the function expression, a closure is created 
@@ -36,6 +71,8 @@ function setTimer(doneMessage, n) {
 // doneMessage variable, which is now set to “OUCH!” in the environment, so we see “OUCH!” in the alert.
 // not "Cookies are done!"
 setTimer("Cookies are done!", 1000);
+*/
+
 
 // brain power 
 // pass a function to a function. 
