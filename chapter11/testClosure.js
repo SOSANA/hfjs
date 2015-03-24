@@ -22,13 +22,13 @@
 // that variable where the function expression used to be. Is the code more obvious now? So, what 
 // does it do?
 
-// Here's the function extracted. We just called it eat. You could have made this a function declaration 
-// after anonymous function
+// Here's the function extracted. We just called it eat. You could have made this a function declaration. 
+// After anonymous function
 var eat = (function(food){
     if (food === "cookies") {
         alert("More please");
     } else if (food === "cake") {
-    alert("Yum yum")
+        alert("Yum yum");
     }
 });
 // callback with argument
@@ -36,7 +36,7 @@ var eat = (function(food){
 // or you can do a callback like this  
 //(eat("cookies"));
 
-// before variable expression
+// Before variable expression
 // computes an anonymous function with a conditional, that checks if the food argument is equal to 
 // "cookies" or "cake" and returns alert "More Please" when called back is complete
 /*
