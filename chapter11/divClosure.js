@@ -7,7 +7,7 @@
 /*
 // the count variable will need to be a global variable, because if it's local to handleClick
 // (the click event handler on the button, see below), it'll just get re-initialized everytime
-// we click
+// we click the button
 var count = 0;
 
 window.onload = function() {
