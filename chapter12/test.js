@@ -1,10 +1,12 @@
 /*
+ * 
  * Hello object constructors!!!
  * 
  * Object constructors , or “constructors” for short, can create objects much more easily, and we can 
  * create objects that all adhere to the same design blueprint —meaning we can use constructors to 
  * ensure each object has the same properties and includes the same methods. Think of a constructor like 
  * a little factory that can create an endless number of similar objects.
+ * 
 */
 
 // Exercise 
@@ -12,19 +14,17 @@ function Coffee(roast, ounces) {
     this.roast = roast;
     this.ounces = ounces;
     this.getSize = function() {
-        if (this.ounces === 16 ) {
-            this.ounces;
+        if (this.ounces === 8 ) {
+            return "small";
         } else if ( this.ounces === 12 ) {
-            this.ounces;
-        } else {
-            this.ounces;
+            return "medium";
+        } else if (this.ounces === 16) {
+            return "large";
         }
     };
     this.toString = function() {
-        
-    }
-
-
+        return "You've ordered a " + this.getSize() + " " + this.roast + " coffee.";
+    };
 }
 
 var houseBlend = new Coffee("House Blend", 12);
