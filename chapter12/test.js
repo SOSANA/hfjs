@@ -7,9 +7,169 @@
  * ensure each object has the same properties and includes the same methods. Think of a constructor like 
  * a little factory that can create an endless number of similar objects.
  * 
+*/ 
+// instanceof dogCatcher Exercise
+function dogCatcher(obj) {
+	if (obj instanceof Dog) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function Cat(name, breed, weight) {
+    this.name = name;
+    this.breed = breed;
+    this.weight = weight;
+}
+var meow = new Cat("Meow", "Siamese", 10); 
+var whiskers = new Cat("Whiskers", "Mixed", 12); 
+
+var fido = {name: "Fido", breed: "Mixed", weight: 38}; 
+
+function Dog(name, breed, weight) {
+    this.name = name;
+    this.breed = breed;
+    this.weight = weight;
+    this.bark = function() {
+        if (this.weight > 25) {
+            alert(this.name + " says Woof!");
+        } else {
+            alert(this.name + " says Yip!");
+        }
+    };
+}
+var fluffy = new Dog("Fluffy", "Poodle", 30);
+var spot = new Dog("Spot", "Chihuahua", 10);
+var dogs = [meow, whiskers, fido, fluffy, spot];
+
+for (var i = 0; i < dogs.length; i++) {
+    if (dogCatcher(dogs[i])) {
+        console.log(dogs[i].name + " is a dog!");
+    }
+}
+// Car and Dog constructors typeof Exercise 
+// The typeof operator returns the type of its operand. If you pass it a string you’ll get back “string”, 
+// if you pass it an object you’ll get back “object” and so on. You can pass it any type: a number, a 
+// string, a boolean, or a more complex type like an object or function. But typeof can’t be more specific 
+// and tell you the object is a dog or a car.
+/*
+function Car(params) {
+	this.make = params.make;
+	this.model = params.model;
+	this.year = params.year;
+	this.color = params.color;
+	this.passengers = params.passengers;
+	this.convertible = params.convertible;
+	this.mileage = params.mileage;
+	this.started = false;
+
+	this.start = function() {
+		this.started = true;
+	};
+
+	this.stop = function() {
+		this.started = false;
+	};
+
+	this.drive = function() {
+		if (this.started) {
+			console.log(this.make + " " + this.model + " goes zoom zoom!");
+		} else {
+			console.log("Start the engine first.");
+		}
+	};
+
+}
+
+var cadiParams = {make: "GM", 
+                  model: "Cadillac", 
+                  year: 1955, 
+                  color: "tan", 
+                  passengers: 5, 
+                  convertible: false, 
+                  miles: 12892};
+var cadi = new Car(cadiParams);
+
+var chevyParams = {make: "Chevy", 
+                   model: "Bel Air", 
+                   year: 1957, 
+                   color: "red", 
+                   passengers: 2, 
+                   convertible: false, 
+                   miles: 1021};
+var chevy = new Car(chevyParams);
+
+var taxiParams= {make: "Webville Motors", 
+                 model: "Taxi", 
+                 year: 1955, 
+                 color: "yellow", 
+                 passengers: 4, 
+                 convertible: false, 
+                 miles: 281341};
+var taxi = new Car(taxiParams);
+
+var fiatParams= {make: "Webville Motors", 
+                 model: "500", 
+                 year: 1957, 
+                 color: "Medium Blue", 
+                 passengers: 2, 
+                 convertible: false, 
+                 miles: 88000};
+var fiat = new Car("Fiat", "500", 1957, "Medium Blue", 2, false, 88000);
+
+var testParams= {make: "Webville Motors", 
+                 model: "Test Car", 
+                 year: 2014, 
+                 color: "marine", 
+                 passengers: 2, 
+                 convertible: true, 
+                 miles: 21};
+var testCar = new Car("WebVille Motors", "Test Car", 2014, "marine", 2, true, 21);
+
+var cars = [chevy, cadi, taxi, fiat, testCar];
+*/
+/*
+ * Commented out so we don't have to see all the alerts again!
+ *
+for(var i = 0; i < cars.length; i++) {
+    cars[i].start();
+    cars[i].drive();
+    cars[i].drive();
+    cars[i].stop();
+}
+*/
+/*
+function Dog(name, breed, weight) {
+    this.name = name;
+    this.breed = breed;
+    this.weight = weight;
+    this.bark = function() {
+        if (this.weight > 25) {
+            alert(this.name + " says Woof!");
+        } else {
+            alert(this.name + " says Yip!");
+        }
+    };
+}
+
+var limoParams = {make: "Webville Motors",
+                  model: "limo", 
+                  year: 1983, 
+                  color: "black", 
+                  passengers: 12, 
+                  convertible: true, 
+                  mileage: 21120};
+
+var limo = new Car(limoParams);
+var limoDog = new Dog("Rhapsody In Blue", "Poodle", 40);
+
+console.log(limo.make + " " + limo.model + " is a " + typeof limo);
+console.log(limoDog.name + " is a " + typeof limoDog);
 */
 
+
 // Refactoring the Car Object Constructor by rewiring the arguments as an object literal
+/*
 function Car(params) {
     this.make = params.make;
     this.model = params.model;
@@ -112,6 +272,7 @@ for(var i = 0; i < cars.length; i++) {
     cars[i].drive();
     cars[i].stop();
 }
+*/
 
 // Car Exercise
 /*
