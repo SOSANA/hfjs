@@ -8,9 +8,53 @@
  * a little factory that can create an endless number of similar objects.
  * 
 */ 
+
+// altering an object from a constructor
+function Dog(name, breed, weight) {
+    this.name = name;
+    this.breed = breed;
+    this.weight = weight;
+    this.bark = function() {
+        if (this.weight > 25) {
+            alert(this.name + " says Woof!");
+        } else {
+            alert(this.name + " says Yip!");
+        }
+    };
+    this.trust = function(person) {
+    return (person === "Sosana");
+};
+}
+
+var lulu = new Dog("Lulu", "Mixed", 15);
+lulu.owner = "Sosana";
+delete lulu.weight;
+/*
+lulu.trust = function(person) {
+    return (person === "Bob");
+}
+*/
+console.log(lulu.name + " " + "trusts " + lulu.trust);
+
+var notBite = lulu.trust("Sosana");
+
+var spot = new Dog("Spot", "Chihuahua", 10);
+// Doesn't work because spot doesn't have a method trust, resulting in: "TypeError:Object
+// and Dog has no method "trust".
+notBite = spot.trust("Sosana");
+
+
 // instanceof dogCatcher Exercise
+/* 
 function dogCatcher(obj) {
 	if (obj instanceof Dog) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function catCatcher(obj) {
+	if (obj instanceof Cat) {
         return true;
     } else {
         return false;
@@ -23,9 +67,9 @@ function Cat(name, breed, weight) {
 }
 var meow = new Cat("Meow", "Siamese", 10); 
 var whiskers = new Cat("Whiskers", "Mixed", 12); 
+var cats = [meow, whiskers];
 
-var fido = {name: "Fido", breed: "Mixed", weight: 38}; 
-
+ 
 function Dog(name, breed, weight) {
     this.name = name;
     this.breed = breed;
@@ -38,15 +82,25 @@ function Dog(name, breed, weight) {
         }
     };
 }
+var fido = {name: "Fido", breed: "Mixed", weight: 38};
 var fluffy = new Dog("Fluffy", "Poodle", 30);
 var spot = new Dog("Spot", "Chihuahua", 10);
-var dogs = [meow, whiskers, fido, fluffy, spot];
+var dogs = [fido, fluffy, spot];
 
 for (var i = 0; i < dogs.length; i++) {
     if (dogCatcher(dogs[i])) {
         console.log(dogs[i].name + " is a dog!");
     }
-}
+};
+
+for (var i = 0; i < cats.length; i++) {
+    if (catCatcher(cats[i])) {
+        console.log(cats[i].name + " is a cat!");
+    }
+};
+*/
+
+
 // Car and Dog constructors typeof Exercise 
 // The typeof operator returns the type of its operand. If you pass it a string you’ll get back “string”, 
 // if you pass it an object you’ll get back “object” and so on. You can pass it any type: a number, a 
