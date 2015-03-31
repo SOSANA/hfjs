@@ -16,32 +16,25 @@ function Dog(name, breed, weight) {
     this.weight = weight;
     this.bark = function() {
         if (this.weight > 25) {
-            alert(this.name + " says Woof!");
+            return this.name + " says I am a big fella!";
         } else {
-            alert(this.name + " says Yip!");
+            return this.name + " says I'm just a lil fella!";
         }
     };
     this.trust = function(person) {
-    return (person === "Sosana");
-};
+                    return (person === "Bob"); 
+    };
 }
 
 var lulu = new Dog("Lulu", "Mixed", 15);
 lulu.owner = "Sosana";
-delete lulu.weight;
-/*
-lulu.trust = function(person) {
-    return (person === "Bob");
-}
-*/
-console.log(lulu.name + " " + "trusts " + lulu.trust);
+lulu.speak = lulu.bark();
+//lulu.speak = Dog.bark(15);
+//delete lulu.weight;
 
-var notBite = lulu.trust("Sosana");
-
-var spot = new Dog("Spot", "Chihuahua", 10);
-// Doesn't work because spot doesn't have a method trust, resulting in: "TypeError:Object
-// and Dog has no method "trust".
-notBite = spot.trust("Sosana");
+console.log("It's " + lulu.trust("Bob") + " " + lulu.name + " trusts " + lulu.owner);
+console.log(lulu.name + " " + "weighs " + lulu.weight);
+console.log(lulu.speak);
 
 
 // instanceof dogCatcher Exercise
