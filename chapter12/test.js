@@ -9,7 +9,75 @@
  * 
 */ 
 
+// Array objects
+var emptyArray = new Array();
+
+// JavaScript's built-in objects
+var now = new Date();
+var dataString = now.toString();
+var theYear = now.getFullYear();
+var theDayofWeek = now.getDay();
+console.log(now);
+console.log(dataString);
+console.log(theYear);
+console.log(theDayofWeek);
+
+
+
+// altering an objects from a constructor
+// a car is still a car, even if you change it later.
+/*
+function Car(params) {
+    this.make = params.make;
+    this.model = params.model;
+    this.year = params.year;
+    this.color = params.color;
+    this.passengers = params.passengers;
+    this.convertible = params.convertible;
+    this.mileage = params.mileage;
+    this.started = false;
+
+    this.start = function() {
+        this.started = true;
+    };     
+    this.stop = function() {
+        this.started = false;
+    };    
+    this.drive = function() {
+        if (this.started) {
+            alert("Zoom zoom!");
+        } else {
+            alert("You need to start the engine first.");
+        }      
+    };
+}
+
+var cadiParams = {make: "GM", 
+                  model: "Cadillac", 
+                  year: 1955, 
+                  color: "tan", 
+                  passengers: 5, 
+                  convertible: false, 
+                  mileage: 12892};
+
+var cadi = new Car(cadiParams);
+cadi.chrome = true;
+delete cadi.convertible;
+
+function cadiCar (obj) {
+    if (obj instanceof Car) {
+        return true;
+    } else {
+        return false;
+    }    
+}
+
+console.log(cadiCar(cadi));
+*/
+
+
 // altering an object from a constructor
+/*
 function Dog(name, breed, weight) {
     this.name = name;
     this.breed = breed;
@@ -29,12 +97,12 @@ function Dog(name, breed, weight) {
 var lulu = new Dog("Lulu", "Mixed", 15);
 lulu.owner = "Sosana";
 lulu.speak = lulu.bark();
-//lulu.speak = Dog.bark(15);
 //delete lulu.weight;
 
 console.log("It's " + lulu.trust("Bob") + " " + lulu.name + " trusts " + lulu.owner);
 console.log(lulu.name + " " + "weighs " + lulu.weight);
 console.log(lulu.speak);
+*/
 
 
 // instanceof dogCatcher Exercise
