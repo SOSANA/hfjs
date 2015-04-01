@@ -10,18 +10,56 @@
 */ 
 
 // Array objects
+
+// Creates an empty array with length zero.
 var emptyArray = new Array();
+// creating a new, empty array object and at same time add items to it
+emptyArray[0] = 99;
+// We can also create array objects that have a specific size. Say we want an array with three items
+var oddNumbers = new Array(3);
+oddNumbers[0] = 1;
+oddNumbers[1] = 3;
+oddNumbers[2] = 5;
+//console.log(emptyArray);
+//console.log(oddNumbers);
+//console.log(oddNumbers[1]);
+
+// array object set of methods, just tip of iceberg for methods check out JS:The Definitive Guide
+// The reverse method all the values in the array
+oddNumbers.reverse();
+// The join method creates a string from the values in oddNumbers placing a " - " between the values in array
+var aString = oddNumbers.join(" - ");
+// This method takes a function and tests each value of the array to see if the function returns true or false 
+// when called on that value. i fthe function returns true for all the array items, then the result of the every 
+// method mehtod is true
+var areAllOdd = oddNumbers.every(function(x) {
+    return ((x % 2) !== 0);
+})
+
+console.log(oddNumbers.reverse());
+console.log(aString);
+console.log(areAllOdd);
 
 // JavaScript's built-in objects
+/*
 var now = new Date();
+// get full date
 var dataString = now.toString();
+// get the year
 var theYear = now.getFullYear();
+// gets the day
 var theDayofWeek = now.getDay();
-console.log(now);
+// you can pass in addition arguments to the date constructor
+// passing a simple date string 
+var birthday = new Date("May 10, 1982");
+// now, we're including a time in the string too
+var birthday = new Date("May 10, 1982 08:03 pm");
+
 console.log(dataString);
 console.log(theYear);
 console.log(theDayofWeek);
-
+console.log(birthday);
+*/
 
 
 // altering an objects from a constructor
