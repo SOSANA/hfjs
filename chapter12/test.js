@@ -9,7 +9,28 @@
  * 
 */ 
 
-// Array objects
+// Javascript Built-in objects
+// new Object() - is equivalent to using object literal notation
+// Math object - has properties and mehtods for doing math stuff. Like Math.PI and Math.random()
+// RegExp - is used to create regular expressions in objects, which allow you to search for patterns
+// even complex ones, in text
+// ERROR - creates standard error objects that are handy when catching errors in your code
+
+
+// Array Constructor comes in handy wen you need to create an array of a specific size you determine at 
+// runtime, and then add items to it later. This code presumably uses big arrays that we won't know the 
+// size of until runtime.
+var n = getNumberOfWeidgetsFromDatabase();
+var widgets = new Array(n);
+for(var i= 0; i < n; i++) {
+    widgets[i] = getDatabaseRecords(i); 
+}
+
+// Array Constructor
+var items = new Array("a", "b", "c");
+// Array literal, this is just short hand for Array Constructor
+var items = ["a", "b", "c"];
+
 
 // Creates an empty array with length zero.
 var emptyArray = new Array();
