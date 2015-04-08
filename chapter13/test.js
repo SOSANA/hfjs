@@ -19,12 +19,54 @@
  * 
 */
 
+
+// Robot Exercise game
+/*
+function Game() {
+	this.level = 0;
+}
+
+Game.prototype.play = function() {
+	// player plays game here
+	this.level++;
+	console.log("Welcome to level " + this.level);
+	this.unlock();
+}
+// adding a new deployLaser method when scores reaches 42
+Game.prototype.unlock = function() {
+    if (this.level === 42) {
+		Robot.prototype.deployLaser = function () {
+			console.log(this.name +  " is blasting you with laser beams.");
+		}
+	}	
+}
+
+function Robot(name, year, owner) {
+    this.name = name;
+    this.year = year;
+    this.owner = owner;
+}
+
+var game = new Game();
+var robby = new Robot("Robby", 1956, "Dr. Morbius");
+var rosie = new Robot("Rosie", 1962, "George Jetson");
+
+while (game.level < 42) {
+     game.play();
+}
+
+robby.deployLaser();
+rosie.deployLaser();
+*/
+
+
 // Teaching a dog a new trick (dynamic prototypes)
 /*
  * We’re glad to see Barnaby can now sit. But it turns out that now all our dogs can sit, because once you 
  * add a method to a prototype, any objects that inherit from that prototype can make use of that method:
  * This works for properties too, of course.
 */
+
 function Dog(name, breed, weight) {
 	this.name = name;
 	this.breed = breed;
@@ -32,6 +74,8 @@ function Dog(name, breed, weight) {
 }
 
 Dog.prototype.species = "Canine";
+// adding new property prototype sitting
+Dog.prototype.sitting = false;
 
 Dog.prototype.bark = function() { 
 	if (this.weight > 25) {
@@ -47,12 +91,42 @@ Dog.prototype.run = function() {
 Dog.prototype.wag = function() {
 	console.log("Wag!"); 
 };
+// adding new method for sit
+Dog.prototype.sit = function() { 
+	if (this.sitting) {
+		console.log(this.name + " is already sitting"); 
+	} else {
+		this.sitting = true;
+		console.log(this.name + " is now sitting"); 
+	}
+};
 
+var fido = new Dog("Fido", "Mixed", 38);
+var fluffy = new Dog("Fluffy", "Poodle", 30); 
+var spot = new Dog("Spot", "Chihuahua", 10);
 var barnaby = new Dog("Barnaby", "Basset Hound", 55);
-Dog.prototype.sit = function() {
-	console.log(this.name + " is now sitting");
-}
+
+spot.bark = function() {
+	console.log(this.name + " says WOOF!");
+};
+
+fido.bark(); 
+fido.run(); 
+fido.wag();
+
+fluffy.bark(); 
+fluffy.run(); 
+fluffy.wag();
+
+spot.bark(); 
+spot.run(); 
+spot.wag();
+
 barnaby.sit();
+barnaby.sit();
+spot.sit();
+spot.sit();
+
 
 /*
 // Robots Exercise
