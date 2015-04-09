@@ -122,10 +122,25 @@ spot.bark();
 spot.run(); 
 spot.wag();
 
+
 barnaby.sit();
 barnaby.sit();
 spot.sit();
 spot.sit();
+// using the hasOwnProperty method to determine if its using a property that's in the instance or in 
+// the prototype. The method will return true if its from the instance or false if its from the prototype
+console.log(spot.hasOwnProperty("species"));
+console.log(spot.hasOwnProperty("species"));
+
+// we first check to see if spot has his own sitting property we get false
+spot.hasOwnProperty("sitting");
+// Then we set spot sitting to  true, addin this property to the spot instance
+spot.sitting = true;
+// this call to hasOwnProperty returns true, because spot now has his own sitting property
+console.log(spot.hasOwnProperty("sitting"));
+// but this call to hasOwnProperty returns false, becuase that means the sitting property that fido uses is 
+// defined only in the prototype, and inherited by fido
+console.log(fido.hasOwnProperty("sitting"));
 
 
 /*
