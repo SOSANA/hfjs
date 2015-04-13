@@ -17,8 +17,171 @@
  * to a prototype allows all objects to inherit the new methods or properties. All object instances inherit
  * from the Prototype.
  * 
+ * Start thinking in terms of a chain of prototypes. Rather than having an instance that inherits properties 
+ * from just one prototype, there might be a chain of one or more prototypes your instance can inherit from.
+ * 
 */
 
+
+// ShowDog Exercise utilizing "prototype chain", inheritance from other prototypes and chainging them
+function Dog(name, breed, weight) {
+	this.name = name;
+	this.breed = breed;
+	this.weight = weight;
+}
+
+Dog.prototype.species = "Canine";
+Dog.prototype.sitting = false;
+
+Dog.prototype.bark = function() { 
+	if (this.weight > 25) {
+		console.log(this.name + " says Woof!"); 
+	} else {
+		console.log(this.name + " says Yip!"); 
+	}
+};
+Dog.prototype.run = function() {
+	console.log("Run!"); 
+};
+Dog.prototype.wag = function() {
+	console.log("Wag!"); 
+};
+Dog.prototype.sit = function() { 
+	if (this.sitting) {
+		console.log(this.name + " is already sitting"); 
+	} else {
+		this.sitting = true;
+		console.log(this.name + " is now sitting"); 
+	}
+};
+
+var fido = new Dog("Fido", "Mixed", 38);
+var fluffy = new Dog("Fluffy", "Poodle", 30); 
+var spot = new Dog("Spot", "Chihuahua", 10);
+var barnaby = new Dog("Barnaby", "Basset Hound", 55);
+
+spot.bark = function() {
+	console.log(this.name + " says WOOF!");
+};
+
+fido.bark(); 
+fido.run(); 
+fido.wag();
+
+fluffy.bark(); 
+fluffy.run(); 
+fluffy.wag();
+
+spot.bark(); 
+spot.run(); 
+spot.wag();
+
+barnaby.sit();
+barnaby.sit();
+
+spot.sit();
+spot.sit();
+
+console.log(spot.hasOwnProperty("species"));
+console.log(spot.hasOwnProperty("species"));
+
+spot.hasOwnProperty("sitting");
+spot.sitting = true;
+
+console.log(spot.hasOwnProperty("sitting"));
+console.log(fido.hasOwnProperty("sitting"));
+
+
+// Teaching a dog a new tricks (dynamic prototypes)
+/*
+ * We’re glad to see Barnaby can now sit. But it turns out that now all our dogs can sit, because once you 
+ * add a method to a prototype, any objects that inherit from that prototype can make use of that method:
+ * This works for properties too, of course.
+*/
+/*
+function Dog(name, breed, weight) {
+	this.name = name;
+	this.breed = breed;
+	this.weight = weight;
+}
+
+Dog.prototype.species = "Canine";
+// adding new property prototype sitting
+Dog.prototype.sitting = false;
+
+Dog.prototype.bark = function() { 
+	if (this.weight > 25) {
+		console.log(this.name + " says Woof!"); 
+	} else {
+		console.log(this.name + " says Yip!"); 
+	}
+};
+// adding new method run to Dog prototype
+Dog.prototype.run = function() {
+	console.log("Run!"); 
+};
+// adding new method wag to Dog prototype
+Dog.prototype.wag = function() {
+	console.log("Wag!"); 
+};
+// adding new method sit to Dog prototype
+Dog.prototype.sit = function() { 
+	if (this.sitting) {
+		console.log(this.name + " is already sitting"); 
+	} else {
+		this.sitting = true;
+		console.log(this.name + " is now sitting"); 
+	}
+};
+
+// creating new instances of the Dog prototype
+var fido = new Dog("Fido", "Mixed", 38);
+var fluffy = new Dog("Fluffy", "Poodle", 30); 
+var spot = new Dog("Spot", "Chihuahua", 10);
+var barnaby = new Dog("Barnaby", "Basset Hound", 55);
+
+// creating a new method to only the spot instance prototype
+spot.bark = function() {
+	console.log(this.name + " says WOOF!");
+};
+
+// calling fido
+fido.bark(); 
+fido.run(); 
+fido.wag();
+
+// calling fluffy
+fluffy.bark(); 
+fluffy.run(); 
+fluffy.wag();
+
+// calling spot
+spot.bark(); 
+spot.run(); 
+spot.wag();
+
+// calling barnaby
+barnaby.sit();
+barnaby.sit();
+
+// calling spot
+spot.sit();
+spot.sit();
+// using the hasOwnProperty method to determine if its using a property that's in the instance or in 
+// the prototype. The method will return true if its from the instance or false if its from the prototype
+console.log(spot.hasOwnProperty("species"));
+console.log(spot.hasOwnProperty("species"));
+
+// we first check to see if spot has his own sitting property we get false
+spot.hasOwnProperty("sitting");
+// Then we set spot sitting to  true, addin this property to the spot instance
+spot.sitting = true;
+// this call to hasOwnProperty returns true, because spot now has his own sitting property
+console.log(spot.hasOwnProperty("sitting"));
+// but this call to hasOwnProperty returns false, becuase that means the sitting property that fido uses is 
+// defined only in the prototype, and inherited by fido
+console.log(fido.hasOwnProperty("sitting"));
+*/
 
 // Robot Exercise game
 /*
@@ -58,89 +221,6 @@ while (game.level < 42) {
 robby.deployLaser();
 rosie.deployLaser();
 */
-
-
-// Teaching a dog a new trick (dynamic prototypes)
-/*
- * We’re glad to see Barnaby can now sit. But it turns out that now all our dogs can sit, because once you 
- * add a method to a prototype, any objects that inherit from that prototype can make use of that method:
- * This works for properties too, of course.
-*/
-
-function Dog(name, breed, weight) {
-	this.name = name;
-	this.breed = breed;
-	this.weight = weight;
-}
-
-Dog.prototype.species = "Canine";
-// adding new property prototype sitting
-Dog.prototype.sitting = false;
-
-Dog.prototype.bark = function() { 
-	if (this.weight > 25) {
-		console.log(this.name + " says Woof!"); 
-	} else {
-		console.log(this.name + " says Yip!"); 
-	}
-};
-
-Dog.prototype.run = function() {
-	console.log("Run!"); 
-};
-Dog.prototype.wag = function() {
-	console.log("Wag!"); 
-};
-// adding new method for sit
-Dog.prototype.sit = function() { 
-	if (this.sitting) {
-		console.log(this.name + " is already sitting"); 
-	} else {
-		this.sitting = true;
-		console.log(this.name + " is now sitting"); 
-	}
-};
-
-var fido = new Dog("Fido", "Mixed", 38);
-var fluffy = new Dog("Fluffy", "Poodle", 30); 
-var spot = new Dog("Spot", "Chihuahua", 10);
-var barnaby = new Dog("Barnaby", "Basset Hound", 55);
-
-spot.bark = function() {
-	console.log(this.name + " says WOOF!");
-};
-
-fido.bark(); 
-fido.run(); 
-fido.wag();
-
-fluffy.bark(); 
-fluffy.run(); 
-fluffy.wag();
-
-spot.bark(); 
-spot.run(); 
-spot.wag();
-
-
-barnaby.sit();
-barnaby.sit();
-spot.sit();
-spot.sit();
-// using the hasOwnProperty method to determine if its using a property that's in the instance or in 
-// the prototype. The method will return true if its from the instance or false if its from the prototype
-console.log(spot.hasOwnProperty("species"));
-console.log(spot.hasOwnProperty("species"));
-
-// we first check to see if spot has his own sitting property we get false
-spot.hasOwnProperty("sitting");
-// Then we set spot sitting to  true, addin this property to the spot instance
-spot.sitting = true;
-// this call to hasOwnProperty returns true, because spot now has his own sitting property
-console.log(spot.hasOwnProperty("sitting"));
-// but this call to hasOwnProperty returns false, becuase that means the sitting property that fido uses is 
-// defined only in the prototype, and inherited by fido
-console.log(fido.hasOwnProperty("sitting"));
 
 
 /*
