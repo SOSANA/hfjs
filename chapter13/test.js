@@ -67,6 +67,10 @@ function ShowDog(name, breed, weight, handler) {
 // and extends it with new ones
 // creating ShowDog prototype to be instance of Dog prototype
 ShowDog.prototype = new Dog();
+// here we are explicityly setting its constructor property to ShowDOg constructor
+// ***** Remember this is best practice as it will show proper prototype its inheriting from for 
+// ***** instanceof
+ShowDog.prototype.constructor = ShowDog; 
 // adding new property to show all dogs are in Webville league
 ShowDog.prototype.league = "Webville";
 // Here are all the mehtods we need for show dogs
@@ -87,6 +91,13 @@ ShowDog.prototype.groom = function() {
 };
 
 var fido = new Dog("Fido", "Mixed", 38);
+// using this to test if Fido is instance of Dog or ShowDog
+if (fido instanceof Dog) {
+    console.log("Fido is a Dog");
+}
+if (fido instanceof ShowDog) {
+    console.log("Fido is a ShowDog");
+}
 var fluffy = new Dog("Fluffy", "Poodle", 30); 
 var spot = new Dog("Spot", "Chihuahua", 10);
 spot.bark = function() {
@@ -96,6 +107,13 @@ var barnaby = new Dog("Barnaby", "Basset Hound", 55);
 
 // creating our new show dog scotty
 var scotty = new ShowDog("Scotty", "Scottish Terrier", 15, "Cookie");
+// using this to test if Scotty is instance of Dog or ShowDog
+if (scotty instanceof Dog) {
+    console.log("Scotty is a Dog");
+}
+if (scotty instanceof ShowDog) {
+    console.log("Scotty is a ShowDog");
+}
 
 fido.bark(); 
 fluffy.bark(); 
@@ -107,6 +125,10 @@ scotty.bark();
 
 console.log(scotty.league);
 console.log(scotty.species);
+
+// Testing to see where fido and scotty inherit thier prototype from
+console.log("Fido constructor is " + fido.constructor);
+console.log("Scotty constructor is " + scotty.constructor);
 
 // Teaching a dog a new tricks (dynamic prototypes)
 /*
