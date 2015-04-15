@@ -55,42 +55,58 @@ Dog.prototype.sit = function() {
 	}
 };
 
+// creating our ShowDog constructor
+function ShowDog(name, breed, weight, handler) {
+	this.name = name;
+	this.breed = breed;
+	this.weight = weight;
+    this.handler = handler;
+}
+
+// show dog prototype "extends" the dog prototype. It inherits properties from the dog prototype
+// and extends it with new ones
+// creating ShowDog prototype to be instance of Dog prototype
+ShowDog.prototype = new Dog();
+// adding new property to show all dogs are in Webville league
+ShowDog.prototype.league = "Webville";
+// Here are all the mehtods we need for show dogs
+ShowDog.prototype.stack = function() {
+    console.log("Stack");
+};
+
+ShowDog.prototype.bait = function() {
+    console.log("Bait");
+};
+
+ShowDog.prototype.gait = function(kind) {
+    console.log(kind + "ing");
+};
+
+ShowDog.prototype.groom = function() {
+    console.log("Goom");
+};
+
 var fido = new Dog("Fido", "Mixed", 38);
 var fluffy = new Dog("Fluffy", "Poodle", 30); 
 var spot = new Dog("Spot", "Chihuahua", 10);
-var barnaby = new Dog("Barnaby", "Basset Hound", 55);
-
 spot.bark = function() {
 	console.log(this.name + " says WOOF!");
 };
+var barnaby = new Dog("Barnaby", "Basset Hound", 55);
+
+// creating our new show dog scotty
+var scotty = new ShowDog("Scotty", "Scottish Terrier", 15, "Cookie");
 
 fido.bark(); 
-fido.run(); 
-fido.wag();
-
 fluffy.bark(); 
-fluffy.run(); 
-fluffy.wag();
-
 spot.bark(); 
-spot.run(); 
-spot.wag();
 
-barnaby.sit();
-barnaby.sit();
+// calling scotty stack and bark methods
+scotty.stack();
+scotty.bark();
 
-spot.sit();
-spot.sit();
-
-console.log(spot.hasOwnProperty("species"));
-console.log(spot.hasOwnProperty("species"));
-
-spot.hasOwnProperty("sitting");
-spot.sitting = true;
-
-console.log(spot.hasOwnProperty("sitting"));
-console.log(fido.hasOwnProperty("sitting"));
-
+console.log(scotty.league);
+console.log(scotty.species);
 
 // Teaching a dog a new tricks (dynamic prototypes)
 /*
