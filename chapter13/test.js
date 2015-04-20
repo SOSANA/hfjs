@@ -23,7 +23,7 @@
 */
 
 
-// ShowDog Exercise utilizing "prototype chain", inheritance from other prototypes and chainging them
+// ShowDog Exercise utilizing "prototype chain", inheritance from other prototypes and chaining them together
 function Dog(name, breed, weight) {
 	this.name = name;
 	this.breed = breed;
@@ -57,9 +57,18 @@ Dog.prototype.sit = function() {
 
 // creating our ShowDog constructor
 function ShowDog(name, breed, weight, handler) {
-	this.name = name;
+    // Using Dog.call to call Dog and reuse the Dog constructor's to process the name, breed, 
+    // and weight.call is a builtin method that you can use on any function (and remember Dog
+    // is a function). Dog.call invokes the Dog function and passes arguments for the Dog function.
+	Dog.call(this, name, breed, weight);
+    /* 
+     * old way, In effort to maintain the idea of eliminating duplicate code 
+     *  We use the acronym: DRY = “Don’t Repeat Yourself”.
+     *
+    this.name = name;
 	this.breed = breed;
-	this.weight = weight;
+	this.weight = weight; 
+    */
     this.handler = handler;
 }
 
@@ -73,6 +82,7 @@ ShowDog.prototype = new Dog();
 ShowDog.prototype.constructor = ShowDog; 
 // adding new property to show all dogs are in Webville league
 ShowDog.prototype.league = "Webville";
+
 // Here are all the mehtods we need for show dogs
 ShowDog.prototype.stack = function() {
     console.log("Stack");
