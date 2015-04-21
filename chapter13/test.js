@@ -22,8 +22,51 @@
  * 
 */
 
+// Overriding built-in behavior You already know that by adding methods to a prototype, you can add new 
+// functionality to all instances of that prototype. This applies not only to your own objects, but also to 
+// built-in objects.(not okay to override are constructor, hasOwnProperty, isPrototypeOf, propertyIsEnumerable, 
+// okay to override are toString, toLocaleString, valueOf) refer to p588 for refresher 
+function Robot(name, year, owner) {
+    this.name = name;
+    this.year = year;
+    this.owner = owner;
+}
+
+// So we can override the toString method and write one that creates a string specifically for Robot objects
+Robot.prototype.toString = function() {
+    return this.name + " Robot belonging to " + this.owner;
+}
+var toy = new Robot("Toy", 2013, "Avary");
+console.log(toy.toString());
+// the toy object will get converted to a string using toString before it's concatenated. If toy has overridden
+// toSting, it will use that method.
+console.log("Robot is: " + toy);
+
+// Let’s say we want to extend the String prototype with a method, cliche , that returns true if the string 
+// contains a known cliché. Here’s how we’d do that:
+String.prototype.cliche = function() {
+    var cliche = ["lock and load", "touch base", "open the kimono"];
+    
+    for (var i = 0; i < cliche.length; i++) {
+        var index = this.indexOf(cliche[i]);
+        if (index >= 0) {
+            return true;
+        }
+    }
+    return false;
+};
+
+var sentences = ["I'll send my car around to pick you up.",
+                 "Let's touch base in the morning and see where we are", 
+                 "We don't want to open the kimono, we just want to inform them."];
+
+for () {
+    
+}
+
 
 // ShowDog Exercise utilizing "prototype chain", inheritance from other prototypes and chaining them together
+/*
 function Dog(name, breed, weight) {
 	this.name = name;
 	this.breed = breed;
@@ -61,14 +104,13 @@ function ShowDog(name, breed, weight, handler) {
     // and weight.call is a builtin method that you can use on any function (and remember Dog
     // is a function). Dog.call invokes the Dog function and passes arguments for the Dog function.
 	Dog.call(this, name, breed, weight);
-    /* 
-     * old way, In effort to maintain the idea of eliminating duplicate code 
-     *  We use the acronym: DRY = “Don’t Repeat Yourself”.
-     *
-    this.name = name;
-	this.breed = breed;
-	this.weight = weight; 
-    */
+     
+    // old way, In effort to maintain the idea of eliminating duplicate code 
+    // We use the acronym: DRY = “Don’t Repeat Yourself”.
+    //this.name = name;
+	//this.breed = breed;
+	//this.weight = weight; 
+   
     this.handler = handler;
 }
 
@@ -139,6 +181,8 @@ console.log(scotty.species);
 // Testing to see where fido and scotty inherit thier prototype from
 console.log("Fido constructor is " + fido.constructor);
 console.log("Scotty constructor is " + scotty.constructor);
+*/
+
 
 // Teaching a dog a new tricks (dynamic prototypes)
 /*
