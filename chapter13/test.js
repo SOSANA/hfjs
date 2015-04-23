@@ -42,12 +42,15 @@ console.log(toy.toString());
 // toSting, it will use that method.
 console.log("Robot is: " + toy);
 
-// Let’s say we want to extend the String prototype with a method, cliche , that returns true if the string 
-// contains a known cliché. Here’s how we’d do that:
+// Let’s say we want to extend the String prototype with a method, cliche, that returns true if the string 
+// contains a known cliché. Here we are adding a method, cliche, to the string prototype.
 String.prototype.cliche = function() {
+    // we define offending phrases to look for
     var cliche = ["lock and load", "touch base", "open the kimono"];
     
     for (var i = 0; i < cliche.length; i++) {
+        // then we use the string's indexOf function to see if the string matches any of the cilches. if it does
+        // we imediately return true. Note that "this" is the string on which we call the method cliche.
         var index = this.indexOf(cliche[i]);
         if (index >= 0) {
             return true;
@@ -56,12 +59,20 @@ String.prototype.cliche = function() {
     return false;
 };
 
+// testing cliche with some sentences, including a couple that use cliches.
 var sentences = ["I'll send my car around to pick you up.",
                  "Let's touch base in the morning and see where we are", 
                  "We don't want to open the kimono, we just want to inform them."];
 
-for () {
-    
+for (var i = 0; i < sentences.length; i++) {
+    var phrase = sentences[i];
+    // each sentence is a string, so we can call its cliche method
+    // notice we are not creating a string useing the string constructor and new. Javascript is converting each
+    // string to a Strin object behind the scenes for us, when we call the cliche method.
+    if (phrase.cliche()) {
+        // if true is returned, we know we have a cliche in the string
+        console.log("CLICHE ALERT: " + phrase);
+    }
 }
 
 
