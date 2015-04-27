@@ -22,6 +22,42 @@
  * 
 */
 
+// Exercise forwards and backwards.
+String.prototype.palindrom = function () {
+   var len = this.length-1;
+    for (var i = 0; i <= len; i++) {
+        if (this.charAt(i) != this.charAt(len-i)) {
+            return false;
+        }
+        if (i === (len-i)) {
+            return true;
+        }
+    }
+    return true;
+}
+
+// Advaced way
+String.prototype.palindromAdv = function() {
+    var r = this.split("").reverse().join("");
+    return (r === this.valueOf());
+}
+
+var phrases = ["dad",
+               "mom",
+               "wow",
+               "Not a palindrome"];
+
+for (var i = 0; i < phrases.length; i++) {
+    var phrase = phrases[i];
+    if (phrase.palindromAdv()) {
+        console.log("'" + phrase +"' is a palindrome");
+    } else {
+        console.log("'" + phrase + "' is NOT a palindrome");
+    }
+}
+
+
+/*
 // Overriding built-in behavior You already know that by adding methods to a prototype, you can add new 
 // functionality to all instances of that prototype. This applies not only to your own objects, but also to 
 // built-in objects.(not okay to override are constructor, hasOwnProperty, isPrototypeOf, propertyIsEnumerable, 
@@ -74,6 +110,7 @@ for (var i = 0; i < sentences.length; i++) {
         console.log("CLICHE ALERT: " + phrase);
     }
 }
+*/
 
 
 // ShowDog Exercise utilizing "prototype chain", inheritance from other prototypes and chaining them together
