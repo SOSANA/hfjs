@@ -23,21 +23,35 @@
 */
 
 // Exercise forwards and backwards.
-String.prototype.palindrom = function () {
-   var len = this.length-1;
+String.prototype.palindrome = function () {
+    
+    // first we get the length of the string
+    var len = this.length-1;
+    // then we iterate over each character in the string, and test to see if the character at i is the the same
+    // as the character at len-i (ex: the character at the other end)
     for (var i = 0; i <= len; i++) {
         if (this.charAt(i) != this.charAt(len-i)) {
+            // if they are not equal we return false because we don't have a palindrom
             return false;
         }
         if (i === (len-i)) {
+            // if we get to where i is in the middle of the string, or we get to the end of the loop, we return 
+            // true because we've got a palindrome
             return true;
         }
     }
+    // if we get to where i is in the middle of the string, or we get to the end of the loop, we return 
+    // true because we've got a palindrome
     return true;
 }
 
-// Advaced way
-String.prototype.palindromAdv = function() {
+// Advanced way
+// Here, we first split the string into an array of letters, with each letter being one item in the array. We
+// then reverse the array and join all the letters back up into a string. If the original string's value equals
+// the new string, we've got a palindrome.
+// ** NOTE we have to use the valueOf here, because "this" is an object, not a string primitive like r, so if we 
+// don't, we'd be comparing a string to n object, and they wouldn't be equal even if "this" is a palindrome.
+String.prototype.palindromeAdv = function() {
     var r = this.split("").reverse().join("");
     return (r === this.valueOf());
 }
@@ -49,7 +63,7 @@ var phrases = ["dad",
 
 for (var i = 0; i < phrases.length; i++) {
     var phrase = phrases[i];
-    if (phrase.palindromAdv()) {
+    if (phrase.palindromeAdv()) {
         console.log("'" + phrase +"' is a palindrome");
     } else {
         console.log("'" + phrase + "' is NOT a palindrome");
